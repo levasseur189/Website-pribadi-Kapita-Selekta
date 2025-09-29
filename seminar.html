@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seminar - Website Pribadi</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Root colors */
+:root {
+    --primary-color: #00d4ff;
+    --secondary-color: #005bea;
+    --accent-color: #00aaff;
+    --light-color: #e6f7ff;
+    --dark-color: #001f3f;
+    --text-color: #e0e0e0;
+    --shadow: 0 4px 10px rgba(0, 212, 255, 0.3);
+    --transition: all 0.3s ease;
+}
+
+body {
+    background: linear-gradient(135deg, #001f3f 0%, #003f7f 50%, #005bea 100%);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Header & nav */
+header {
+    background: linear-gradient(90deg, #001f3f, #005bea);
+    color: white;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo i { color: var(--primary-color); }
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    justify-content: space-evenly;
+    flex: 1;
+}
+
+.nav-links li { flex: 1; text-align: center; }
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 0.8rem 1rem;
+    display: block;
+    border-radius: 6px;
+    transition: var(--transition);
+}
+
+.nav-links a:hover,
+.nav-links a.active { 
+    background-color: var(--primary-color); 
+    color: #001f3f;
+    transform: translateY(-2px);
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 3px 0;
+    transition: var(--transition);
+}
+
+/* Main */
+main { min-height: 80vh; padding: 3rem 0; }
+
+.section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--primary-color);
+    position: relative;
+    font-size: 2.5rem;
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.7);
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    margin: 0.5rem auto;
+    border-radius: 2px;
+}
+
+/* Seminar Overview Cards */
+.overview-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.overview-card {
+    background: rgba(0, 31, 63, 0.85);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    backdrop-filter: blur(6px);
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.overview-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 212, 255, 0.4);
+}
+
+.card-icon {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    font-size: 2.5rem;
+    padding: 1rem;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+}
+
+.card-content h3 { 
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.card-content p { color: #cfd8dc; }
+
+/* Participants Table */
+.participants-container {
+    background: rgba(0,31,63,0.85);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    margin-bottom: 3rem;
+    overflow-x: auto;
+}
+
+.participants-container h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    color: var(--text-color);
+}
+
+th, td { padding: 0.8rem; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); }
+
+th { background: rgba(0,212,255,0.1); color: var(--primary-color); }
+
+tr:hover { background: rgba(0,212,255,0.1); }
+
+.empty-row { text-align: center; font-style: italic; color: #93c5fd; }
+
+/* Buttons */
+.btn {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: #001f3f;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,212,255,0.4);
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(90deg, #001f3f, #005bea);
+    color: white;
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 3rem;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.social-links { display: flex; gap: 15px; }
+
+.social-links a {
+    color: white;
+    font-size: 1.5rem;
+    transition: var(--transition);
+}
+
+.social-links a:hover {
+    color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .menu-toggle { display: flex; }
+    .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background-color: var(--secondary-color); padding: 1rem; box-shadow: var(--shadow); }
+    .nav-links.active { display: flex; }
+    .nav-links li { margin: 0.5rem 0; }
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="container">
+    <nav>
+        <div class="logo">
+            <i class="fas fa-user-graduate"></i> Website Pribadi
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">🏠 Home</a></li>
+            <li><a href="kapita-selekta.html">📖 Kapita Selekta</a></li>
+            <li><a href="business-plan.html">📈 Business Plan</a></li>
+            <li><a href="flatteners.html">🌐 10 Flatteners</a></li>
+            <li><a href="open-source.html">💻 Open Source</a></li>
+            <li><a href="rencana-bisnis.html">💼 Rencana Bisnis</a></li>
+            <li><a href="seminar.html" class="active">👥 Seminar</a></li>
+        </ul>
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+</div>
+</header>
+
+<main>
+<section id="seminar">
+<div class="container">
+<h2 class="section-title">Seminar & Kolaborasi</h2>
+
+<div class="overview-container">
+    <div class="overview-card">
+        <div class="card-icon"><i class="fas fa-users"></i></div>
+        <div class="card-content">
+            <h3>Partisipan</h3>
+            <p>Daftar rekan yang berpartisipasi dalam seminar</p>
+            <div class="stat-number">0</div>
+        </div>
+    </div>
+
+    <div class="overview-card">
+        <div class="card-icon"><i class="fas fa-project-diagram"></i></div>
+        <div class="card-content">
+            <h3>Proyek Kolaborasi</h3>
+            <p>Proyek penelitian bersama rekan seminar</p>
+            <div class="stat-number">0</div>
+        </div>
+    </div>
+
+    <div class="overview-card">
+        <div class="card-icon"><i class="fas fa-calendar-alt"></i></div>
+        <div class="card-content">
+            <h3>Jadwal Kegiatan</h3>
+            <p>Jadwal seminar dan diskusi berikutnya</p>
+            <div class="stat-number">0</div>
+        </div>
+    </div>
+</div>
+
+<div class="participants-container">
+<h3><i class="fas fa-list-alt"></i> Daftar Rekan Seminar</h3>
+<table>
+<thead>
+<tr><th>Nama</th><th>Judul KP</th><th>Judul Skripsi</th></tr>
+</thead>
+<tbody>
+<tr class="empty-row"><td colspan="3">Data rekan seminar akan ditambahkan di sini</td></tr>
+</tbody>
+</table>
+<div style="margin-top:1rem; text-align:center;">
+<button class="btn"><i class="fas fa-plus"></i> Tambah Rekan Seminar</button>
+</div>
+</div>
+
+</div>
+</section>
+</main>
+
+<footer>
+<div class="container">
+<div class="footer-content">
+<p>&copy; 2025 Website Pribadi Kapita Selekta. All rights reserved.</p>
+<div class="social-links">
+<a href="https://www.linkedin.com/in/daffa-raihan-2b6a45293/"><i class="fab fa-linkedin"></i></a>
+<a href="https://github.com/levasseur189"><i class="fab fa-github"></i></a>
+<a href="https://twitter.com/username"><i class="fab fa-twitter"></i></a>
+</div>
+</div>
+</div>
+</footer>
+
+<script>
+const menuToggle = document.querySelector('.menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
+</script>
+
+</body>
+</html>

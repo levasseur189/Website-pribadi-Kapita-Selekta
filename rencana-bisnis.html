@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rencana Bisnis - Website Pribadi</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    :root {
+      --primary-color: #00d4ff;
+      --secondary-color: #005bea;
+      --accent-color: #33ccff;
+      --dark-color: #001f3f;
+      --light-color: #e6f7ff;
+      --text-color: #e0e0e0;
+      --shadow: 0 4px 12px rgba(0, 212, 255, 0.2);
+      --transition: all 0.3s ease;
+    }
+
+    body {
+      background: linear-gradient(135deg, #001f3f 0%, #003f7f 50%, #005bea 100%);
+      color: var(--text-color);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+           /* Header & Navigation */
+        header {
+            background: linear-gradient(90deg, #001f3f, #005bea);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            justify-content: space-evenly;
+            flex: 1;
+        }
+
+        .nav-links li {
+            flex: 1;
+            text-align: center;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 1px;
+            padding: 0.8rem 1rem;
+            display: block;
+            border-radius: 6px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover, 
+        .nav-links a.active {
+            background-color: var(--primary-color);
+            color: #001f3f;
+            transform: translateY(-2px);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 3px 0;
+            transition: var(--transition);
+        }
+
+      /* Main Content */
+        main {
+            min-height: 80vh;
+            padding: 3rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+            position: relative;
+            font-size: 2.5rem;
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.7);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            margin: 0.5rem auto;
+            border-radius: 2px;
+        }
+
+
+    .content {
+      background: rgba(0, 31, 63, 0.85);
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(6px);
+      animation: fadeIn 1s ease;
+    }
+
+    .content h3 {
+      color: var(--primary-color);
+      margin-bottom: 0.8rem;
+      border-bottom: 2px solid var(--accent-color);
+      padding-bottom: 0.4rem;
+    }
+
+    .content p {
+      margin-bottom: 1.2rem;
+      color: #cfd8dc;
+    }
+
+    .content ul {
+      margin-bottom: 1.5rem;
+      padding-left: 1.2rem;
+    }
+
+    .content li {
+      margin-bottom: 0.6rem;
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(90deg, #001f3f, #005bea);
+      text-align: center;
+      padding: 2rem 0;
+      margin-top: 3rem;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+    }
+
+    .social-links a {
+      color: white;
+      font-size: 1.5rem;
+      transition: var(--transition);
+    }
+
+    .social-links a:hover {
+      color: var(--primary-color);
+      transform: translateY(-3px);
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .menu-toggle { display: flex; }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background: var(--secondary-color);
+        position: absolute;
+        top: 100%;
+        right: 0;
+        left: 0;
+        padding: 1rem;
+      }
+      .nav-links.active { display: flex; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">
+          <i class="fas fa-user-graduate"></i>
+          <span>Website Pribadi</span>
+        </div>
+        <ul class="nav-links">
+          <li><a href="index.html">🏠 Home</a></li>
+          <li><a href="kapita-selekta.html">📖 Kapita Selekta</a></li>
+          <li><a href="business-plan.html">📈 Business Plan</a></li>
+          <li><a href="flatteners.html">🌐 10 Flatteners</a></li>
+          <li><a href="open-source.html">💻 Open Source</a></li>
+          <li><a href="rencana-bisnis.html" class="active">💼 Rencana Bisnis</a></li>
+          <li><a href="seminar.html">👥 Seminar</a></li>
+        </ul>
+        <div class="menu-toggle">
+          <span></span><span></span><span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="rencana-bisnis">
+      <div class="container">
+        <h2 class="section-title">Rencana Bisnis Akademik</h2>
+        <div class="content">
+          <h3>Kompetensi Kurikulum PSTI</h3>
+          <p>Saya memilih kompetensi <strong>Web & Mobile Application Development</strong> karena sesuai dengan minat dan tujuan karir saya sebagai full-stack developer.</p>
+
+          <h3>SWEBOK yang Relevan</h3>
+          <ul>
+            <li><strong>Requirements Engineering:</strong> Analisis kebutuhan pengguna.</li>
+            <li><strong>Design:</strong> Perancangan arsitektur, UI/UX, database.</li>
+            <li><strong>Testing:</strong> Pengujian fungsionalitas & performa.</li>
+            <li><strong>Maintenance:</strong> Pemeliharaan dan update aplikasi.</li>
+            <li><strong>Project Management:</strong> Perencanaan dan manajemen proyek.</li>
+          </ul>
+
+          <h3>Judul KP & Skripsi</h3>
+          <p><strong>KP:</strong> Aplikasi Manajemen Tugas Berbasis Web dengan Fitur Kolaborasi Tim</p>
+          <p><strong>Skripsi:</strong> Aplikasi Mobile untuk Monitoring Kesehatan Mental berbasis CBT</p>
+
+          <h3>Perencanaan Bisnis Kolaborasi</h3>
+          <p>Saya berencana berkolaborasi dengan 2 rekan: 1 fokus pada UI/UX dan 1 fokus backend. Kami akan membentuk tim untuk proyek freelance dan membangun startup digital di bidang kesehatan mental.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <p>&copy; 2025 Website Pribadi Kapita Selekta. All rights reserved.</p>
+        <div class="social-links">
+       <a href="https://www.linkedin.com/in/daffa-raihan-2b6a45293/"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/levasseur189"><i class="fab fa-github"></i></a>
+                    <a href="https://www.instagram.com/daffaraihaannn?utm_source=qr&igsh=ZXIzZzJhbHAzdXUy"><i class="fab fa-instagram"></i></a>
+                    <a href="mailto:daffa9746@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    document.querySelector('.menu-toggle').addEventListener('click', () => {
+      document.querySelector('.nav-links').classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

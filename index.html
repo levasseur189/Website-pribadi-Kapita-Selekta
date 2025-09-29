@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Home - Website Pribadi Kapita Selekta</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    /* Reset */
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    html { scroll-behavior: smooth; }
+
+     :root {
+      --primary-color: #00c6ff;    /* biru elektrik futuristik */
+      --secondary-color: #0072ff;  /* biru neon */
+      --accent-color: #00f5d4;     /* cyan neon */
+      --dark-color: #0a0f1f;       /* biru gelap */
+      --light-color: #38bdf8;      /* biru soft glow */
+      --text-color: #e6f1ff;       /* putih kebiruan */
+      --shadow: 0 4px 20px rgba(0, 198, 255, 0.3);
+      --transition: all 0.3s ease;
+    }
+
+    body{
+      background: radial-gradient(circle at 10% 10%, #071428 0%, #0a1623 20%, #0f2a3a 60%, #102a36 100%);
+      color: var(--text-color);
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+
+     /* Header & Navigation */
+    header {
+      background: linear-gradient(90deg, var(--dark-color), var(--secondary-color), var(--accent-color));
+      color: white;
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--accent-color);
+      text-shadow: 0 0 10px var(--accent-color);
+    }
+
+    .logo i {
+      color: var(--primary-color);
+      text-shadow: 0 0 15px var(--primary-color);
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      justify-content: space-evenly;
+      flex: 1;
+    }
+
+    .nav-links li {
+      flex: 1;
+      text-align: center;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 1px;
+      padding: 0.8rem 1rem;
+      display: block;
+      border-radius: 6px;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+      box-shadow: 0 0 15px var(--primary-color);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .menu-toggle{ display:none; flex-direction:column; gap:4px; cursor:pointer; }
+    .menu-toggle span{ width:24px; height:3px; background:var(--muted); border-radius:3px; transition: var(--transition); }
+
+    /* Hero */
+    #home{ min-height:100vh; display:flex; align-items:center; position:relative; padding:4rem 0; }
+    #home::before{
+      content:'';
+      position:absolute; inset:0;
+      background: linear-gradient(135deg, rgba(0,198,255,0.06), rgba(0,0,0,0.15));
+      pointer-events:none;
+    }
+
+    .hero-content{ display:flex; align-items:center; justify-content:space-between; width:100%; gap:2rem; }
+    /* center on small screens */
+    .profile{ flex:1; text-align:center; padding:2rem; animation: fadeIn 0.9s ease both; }
+
+    .profile-img-container{ position:relative; display:inline-block; margin-bottom:1.5rem; }
+    .profile-img{
+      width:200px; height:200px; border-radius:50%;
+      object-fit:cover;
+      border:5px solid rgba(0,198,255,0.12);
+      box-shadow: 0 8px 30px rgba(0,198,255,0.06);
+      transition: var(--transition);
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    }
+    .profile-img:hover{ transform: scale(1.04); box-shadow: 0 12px 40px rgba(0,198,255,0.12); }
+
+    .profile h1{ font-size:2.4rem; margin-bottom:0.6rem; color:var(--text-color); text-shadow:0 6px 22px rgba(0,0,0,0.5); }
+    .profile h2{ font-size:1.05rem; margin-bottom:1rem; color:var(--muted); display:block; }
+    .profile p{ max-width:680px; margin:0.5rem auto 1rem; color:rgba(230,241,255,0.85); }
+
+    .typing-effect{ border-right:2px solid rgba(0,245,212,0.9); white-space:nowrap; overflow:hidden; display:inline-block; animation: blink-caret 0.8s step-end infinite; padding-right:6px; }
+
+    .skills{ display:flex; justify-content:center; gap:14px; margin-top:1.5rem; flex-wrap:wrap; }
+    .skill-item{
+      background: var(--glass);
+      padding:10px 18px;
+      border-radius:999px;
+      backdrop-filter: blur(6px);
+      border:1px solid rgba(0,198,255,0.06);
+      color:var(--muted);
+      font-weight:600;
+      transition: var(--transition);
+    }
+    .skill-item:hover{ transform: translateY(-6px); box-shadow: 0 8px 30px rgba(0,198,255,0.05); color:var(--light-color); }
+
+    .cta-buttons{ display:flex; justify-content:center; gap:14px; margin-top:1.6rem; flex-wrap:wrap; }
+    .btn{
+      padding:12px 24px; border-radius:28px; text-decoration:none; font-weight:700; display:inline-flex; gap:10px; align-items:center;
+      transition: var(--transition);
+    }
+    .btn-primary{
+      background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+      color:#02111a;
+      box-shadow: 0 10px 30px rgba(0,198,255,0.12);
+    }
+    .btn-primary:hover{ transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,198,255,0.16); }
+    .btn-secondary{
+      background:transparent; color:var(--muted); border:1.5px solid rgba(230,241,255,0.06);
+    }
+    .btn-secondary:hover{ background: rgba(255,255,255,0.02); color:var(--light-color); transform: translateY(-4px); }
+
+    /* Quick Stats */
+    .quick-stats{ margin-top:2.5rem; padding:2.5rem 0; }
+    .stats-container{
+      display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:18px;
+    }
+    .stat-card{
+      background: rgba(15,25,35,0.86);
+      padding:1.6rem; border-radius:12px; text-align:center;
+      border: 1px solid rgba(0,198,255,0.07);
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+    .stat-card:hover{ transform: translateY(-6px); box-shadow: 0 22px 60px rgba(0,198,255,0.06); }
+    .stat-number{ font-size:2.2rem; font-weight:800; color:var(--primary-color); margin-bottom:6px; }
+    .stat-label{ color: rgba(230,241,255,0.85); font-weight:600; }
+
+    /* Updates */
+    .updates-section{
+      padding:3rem 0; margin-top:1.5rem;
+    }
+    .updates-container{
+      display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:18px;
+    }
+    .update-card{
+      background: rgba(8,16,26,0.92);
+      border-radius:12px; padding:1.4rem; box-shadow: var(--shadow);
+      border:1px solid rgba(0,198,255,0.06);
+      transition: var(--transition);
+    }
+    .update-card:hover{ transform: translateY(-6px); box-shadow: 0 22px 60px rgba(0,198,255,0.06); }
+    .update-card h3{ color:var(--light-color); margin-bottom:8px; }
+    .update-date{ color: var(--primary-color); font-size:0.95rem; margin-bottom:8px; }
+
+    /* Footer */
+    footer{
+      background: linear-gradient(90deg, rgba(10,15,25,0.95), rgba(0,24,45,0.95));
+      color:var(--muted); padding:2rem 0; margin-top:2rem;
+      border-top: 1px solid rgba(0,198,255,0.03);
+    }
+    .footer-content{ display:flex; flex-direction:column; align-items:center; gap:12px; }
+    .social-links{ display:flex; gap:14px; align-items:center; }
+    .social-links a{ color:var(--muted); font-size:1.25rem; transition:var(--transition); }
+    .social-links a:hover{ color:var(--accent-color); transform: translateY(-4px); text-shadow:0 6px 18px rgba(0,245,212,0.06); }
+
+    /* Scroll to top */
+    .scroll-to-top{
+      position:fixed; bottom:28px; right:28px; width:50px; height:50px; border-radius:50%;
+      display:flex; align-items:center; justify-content:center; background:linear-gradient(90deg,var(--primary-color),var(--accent-color));
+      color:#02111a; box-shadow: 0 12px 30px rgba(0,198,255,0.12); cursor:pointer; opacity:0; visibility:hidden; transition:var(--transition); z-index:1200;
+    }
+    .scroll-to-top.active{ opacity:1; visibility:visible; transform: translateY(-6px); }
+
+    /* Animations */
+    @keyframes fadeIn{ from{opacity:0; transform:translateY(18px)} to{opacity:1; transform:none} }
+    @keyframes slideIn{ from{opacity:0; transform:translateX(-30px)} to{opacity:1; transform:none} }
+    @keyframes blink-caret{ 0%{ border-color: transparent } 50%{ border-color: rgba(0,245,212,0.9) } 100%{ border-color: transparent } }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero-content{ flex-direction:column; text-align:center; padding-top:1rem; }
+      .nav-links{ display:none; }
+      .menu-toggle{ display:flex; }
+    }
+
+    @media (max-width:480px){
+      .profile-img{ width:150px; height:150px; }
+      .profile h1{ font-size:1.6rem; }
+      .stat-number{ font-size:1.6rem; }
+    }
+
+    /* Mobile nav active style */
+    .nav-links.active{
+      display:flex; flex-direction:column; gap:10px;
+      position:absolute; left:0; right:0; top:100%; background: linear-gradient(180deg, rgba(10,15,25,0.98), rgba(0,24,45,0.98)); padding:1rem; border-top:1px solid rgba(0,198,255,0.04);
+    }
+  </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-user-graduate"></i>
+                    <span>Website Pribadi</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">🏠 Home</a></li>
+                    <li><a href="kapita-selekta.html">📖 Kapita Selekta</a></li>
+                    <li><a href="business-plan.html">📈 Business Plan</a></li>
+                    <li><a href="flatteners.html">🌐 10 Flatteners</a></li>
+                    <li><a href="open-source.html">💻 Open Source</a></li>
+                    <li><a href="rencana-bisnis.html">💼 Rencana Bisnis</a></li>
+                    <li><a href="seminar.html">👥 Seminar</a></li>
+                </ul>
+                <div class="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="home">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="profile">
+                        <div class="profile-img-container">
+                            <img src="image.jpg" alt="Foto Profil" class="profile-img">
+                        </div>
+                        <h1>Daffa Raihan permana</h1>
+                        <h2 class="typing-effect">Jurusan: PSTI | Minat Bidang: UI/UX, Web & Mobile Development</h2>
+                        <p>Tujuan website: dokumentasi materi Kapita Selekta & portofolio akademik</p>
+                        
+                        <div class="skills">
+                            <div class="skill-item">UI/UX Design</div>
+                            <div class="skill-item">Web Development</div>
+                            <div class="skill-item">Mobile Development</div>
+                            <div class="skill-item">Kapita Selekta</div>
+                        </div>
+                        
+                        <div class="cta-buttons">
+                            <a href="kapita-selekta.html" class="btn btn-primary">
+                                <i class="fas fa-book-open"></i> Jelajahi Materi
+                            </a>
+                            <a href="seminar.html" class="btn btn-secondary">
+                                <i class="fas fa-users"></i> Lihat Seminar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Stats Section -->
+        <section class="quick-stats">
+            <div class="container">
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="stat-number">7</div>
+                        <div class="stat-label">Halaman Konten</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">4</div>
+                        <div class="stat-label">Bidang Keahlian</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Komitmen Belajar</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">2025</div>
+                        <div class="stat-label">Tahun Aktif</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recent Updates Section -->
+        <section class="updates-section">
+            <div class="container">
+                <h2 style="text-align: center; margin-bottom: 2rem; color: var(--dark-color);">Update Terbaru</h2>
+                <div class="updates-container">
+                    <div class="update-card">
+                        <h3>Pengembangan Website</h3>
+                        <div class="update-date"><i class="far fa-calendar"></i> Update Terbaru</div>
+                        <p>Website pribadi ini telah dikembangkan sebagai bagian dari dokumentasi mata kuliah Kapita Selekta.</p>
+                    </div>
+                    <div class="update-card">
+                        <h3>Materi Kapita Selekta</h3>
+                        <div class="update-date"><i class="far fa-calendar"></i> Dalam Proses</div>
+                        <p>Sedang dalam proses pengumpulan dan organisasi materi Kapita Selekta untuk ditampilkan di website.</p>
+                    </div>
+                    <div class="update-card">
+                        <h3>Portfolio Akademik</h3>
+                        <div class="update-date"><i class="far fa-calendar"></i> Akan Datang</div>
+                        <p>Pembuatan portofolio akademik yang mencakup proyek dan pencapaian selama studi.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Website Pribadi Kapita Selekta. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/daffa-raihan-2b6a45293/"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/levasseur189"><i class="fab fa-github"></i></a>
+                    <a href="https://www.instagram.com/daffaraihaannn?utm_source=qr&igsh=ZXIzZzJhbHAzdXUy"><i class="fab fa-instagram"></i></a>
+                    <a href="mailto:daffa9746@@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (menuToggle) {
+                menuToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                    
+                    // Animate hamburger icon
+                    const spans = menuToggle.querySelectorAll('span');
+                    if (navLinks.classList.contains('active')) {
+                        spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                        spans[1].style.opacity = '0';
+                        spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+                    } else {
+                        spans[0].style.transform = 'none';
+                        spans[1].style.opacity = '1';
+                        spans[2].style.transform = 'none';
+                    }
+                });
+            }
+            
+            // Header scroll effect
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                const scrollTopBtn = document.querySelector('.scroll-to-top');
+                
+                if (window.scrollY > 50) {
+                    header.style.padding = '0.5rem 0';
+                    header.style.background = 'rgba(30, 27, 75, 0.95)';
+                } else {
+                    header.style.padding = '1rem 0';
+                    header.style.background = 'linear-gradient(90deg, #1e1b4b, #2563eb, #06b6d4)';
+                }
+                
+                // Show/hide scroll to top button
+                if (window.scrollY > 300) {
+                    scrollTopBtn.classList.add('active');
+                } else {
+                    scrollTopBtn.classList.remove('active');
+                }
+            });
+            
+            // Scroll to top functionality
+            document.querySelector('.scroll-to-top').addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Typing effect
+            const typingElement = document.querySelector('.typing-effect');
+            if (typingElement) {
+                const text = typingElement.textContent;
+                typingElement.textContent = '';
+                let i = 0;
+                
+                function typeWriter() {
+                    if (i < text.length) {
+                        typingElement.textContent += text.charAt(i);
+                        i++;
+                        setTimeout(typeWriter, 100);
+                    }
+                }
+                
+                // Start typing effect after a short delay
+                setTimeout(typeWriter, 1000);
+            }
+            
+            // Animate elements on scroll
+            const animateElements = document.querySelectorAll('.stat-card, .update-card');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'fadeIn 0.8s ease forwards';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+            
+            animateElements.forEach(element => {
+                element.style.opacity = '0';
+                observer.observe(element);
+            });
+            
+            // Animate skill items
+            const skillItems = document.querySelectorAll('.skill-item');
+            skillItems.forEach((item, index) => {
+                item.style.opacity = '0';
+                setTimeout(() => {
+                    item.style.animation = 'fadeIn 0.5s ease forwards';
+                }, 300 * index);
+            });
+        });
+    </script>
+</body>
+</html>

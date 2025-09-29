@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Business Plan - Website Pribadi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #00d4ff;   /* cyan neon */
+            --secondary-color: #005bea; /* biru gelap futuristik */
+            --accent-color: #00aaff;    /* biru tegas */
+            --light-color: #e6f7ff;     /* biru muda pastel */
+            --dark-color: #001f3f;      /* biru sangat gelap */
+            --text-color: #e0e0e0;      /* teks abu terang */
+            --shadow: 0 4px 10px rgba(0, 212, 255, 0.3);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            background: linear-gradient(135deg, #001f3f 0%, #003f7f 50%, #005bea 100%);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(90deg, #001f3f, #005bea);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            justify-content: space-evenly;
+            flex: 1;
+        }
+
+        .nav-links li {
+            flex: 1;
+            text-align: center;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 1px;
+            padding: 0.8rem 1rem;
+            display: block;
+            border-radius: 6px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover, 
+        .nav-links a.active {
+            background-color: var(--primary-color);
+            color: #001f3f;
+            transform: translateY(-2px);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 3px 0;
+            transition: var(--transition);
+        }
+
+        /* Main Content */
+        main {
+            min-height: 80vh;
+            padding: 3rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+            position: relative;
+            font-size: 2.5rem;
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.7);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            margin: 0.5rem auto;
+            border-radius: 2px;
+        }
+
+        /* Re-using open-source card styles for consistent look */
+
+        .philosophy-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.6rem;
+            margin-bottom: 2.2rem;
+        }
+
+        .philosophy-card {
+            background: rgba(0, 31, 63, 0.85);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            backdrop-filter: blur(6px);
+            padding-bottom: 0.6rem;
+        }
+
+        .philosophy-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 212, 255, 0.4);
+        }
+
+        .card-icon {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            font-size: 2rem;
+            padding: 1.2rem;
+            text-align: center;
+        }
+
+        .card-content {
+            padding: 1.25rem 1.25rem 1.6rem 1.25rem;
+        }
+
+        .card-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.8rem;
+            font-size: 1.25rem;
+            border-bottom: 2px solid rgba(255,255,255,0.03);
+            padding-bottom: 0.5rem;
+        }
+
+        .card-content ul {
+            color: #cfd8dc;
+            margin-left: 1rem;
+            list-style: disc;
+        }
+
+        .card-content li {
+            margin-bottom: 0.6rem;
+        }
+
+        /* Porter's Five Forces container (use values-container style for consistent white look) */
+        .values-container {
+            background: rgba(255,255,255,0.06);
+            border-radius: 12px;
+            padding: 1.2rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(6px);
+        }
+
+        .values-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .value-item {
+            background: rgba(0, 212, 255, 0.06);
+            padding: 1rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-color);
+            transition: var(--transition);
+            color: #dbeeff;
+        }
+
+        .value-item strong {
+            color: var(--primary-color);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Strategy Section reusing priority look */
+        .priority-container {
+            background: linear-gradient(135deg, rgba(230,247,255,0.06), rgba(11,53,112,0.07));
+            border-radius: 12px;
+            padding: 1.2rem;
+            box-shadow: var(--shadow);
+            border: 1px dashed rgba(0, 212, 255, 0.08);
+            margin-bottom: 2rem;
+            backdrop-filter: blur(3px);
+        }
+
+        .priority-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .priority-card {
+            background: rgba(0, 31, 63, 0.8);
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .priority-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .priority-card h4 {
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .priority-card p {
+            color: #cbdced;
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(90deg, #001f3f, #005bea);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2.5rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.4rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: var(--secondary-color);
+                padding: 1rem;
+                box-shadow: var(--shadow);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 0.5rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-user-graduate"></i>
+                    <span>Website Pribadi</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">🏠 Home</a></li>
+                    <li><a href="kapita-selekta.html">📖 Kapita Selekta</a></li>
+                    <li><a href="business-plan.html" class="active">📈 Business Plan</a></li>
+                    <li><a href="flatteners.html">🌐 10 Flatteners</a></li>
+                    <li><a href="open-source.html">💻 Open Source</a></li>
+                    <li><a href="rencana-bisnis.html">💼 Rencana Bisnis</a></li>
+                    <li><a href="seminar.html">👥 Seminar</a></li>
+                </ul>
+                <div class="menu-toggle" aria-label="Toggle menu" role="button" tabindex="0">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="business-plan">
+            <div class="container">
+                <h2 class="section-title">Business Strategic Plan</h2>
+
+                <!-- SWOT (styled as open-source cards) -->
+                <div class="philosophy-container">
+                    <div class="philosophy-card">
+                        <div class="card-icon"><i class="fas fa-thumbs-up"></i></div>
+                        <div class="card-content">
+                            <h3>Strength (Kekuatan)</h3>
+                            <ul>
+                                <li>Kemampuan teknis dalam pengembangan web</li>
+                                <li>Pemahaman dasar UI/UX</li>
+                                <li>Kemampuan belajar cepat</li>
+                                <li>Ketertarikan pada teknologi terkini</li>
+                                <li>Kreativitas dalam menyelesaikan masalah</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="philosophy-card">
+                        <div class="card-icon"><i class="fas fa-thumbs-down"></i></div>
+                        <div class="card-content">
+                            <h3>Weakness (Kelemahan)</h3>
+                            <ul>
+                                <li>Pengalaman praktis yang masih terbatas</li>
+                                <li>Manajemen waktu yang perlu ditingkatkan</li>
+                                <li>Kurangnya pengalaman pada proyek skala besar</li>
+                                <li>Perlu pengembangan skill leadership</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="philosophy-card">
+                        <div class="card-icon"><i class="fas fa-bullseye"></i></div>
+                        <div class="card-content">
+                            <h3>Opportunity (Peluang)</h3>
+                            <ul>
+                                <li>Permintaan tinggi untuk developer web & mobile</li>
+                                <li>Banyaknya sumber belajar online</li>
+                                <li>Perkembangan startup digital yang pesat</li>
+                                <li>Peluang kerja remote yang semakin luas</li>
+                                <li>Komunitas developer yang aktif</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="philosophy-card">
+                        <div class="card-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                        <div class="card-content">
+                            <h3>Threat (Ancaman)</h3>
+                            <ul>
+                                <li>Persaingan dengan developer lain</li>
+                                <li>Perubahan teknologi yang cepat</li>
+                                <li>Standar industri yang terus berkembang</li>
+                                <li>Automation dan tool low-code</li>
+                                <li>Perubahan kebutuhan pasar yang dinamis</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Porter's Five Forces (values-container + value-item) -->
+                <div class="values-container">
+                    <h3 style="color: var(--primary-color); text-align: center; margin-bottom: 0.8rem;">
+                        <i class="fas fa-chess-board"></i> Porter's Five Forces
+                    </h3>
+                    <p style="text-align: center; color: #cfecff; margin-bottom: 1rem;">
+                        Analisis lingkungan dan persaingan untuk bidang pengembangan web & mobile.
+                    </p>
+
+                    <div class="values-grid">
+                        <div class="value-item">
+                            <strong>Persaingan antar kompetitor</strong>
+                            Banyak developer dan perusahaan yang menawarkan jasa serupa — tingkat persaingan tinggi.
+                        </div>
+                        <div class="value-item">
+                            <strong>Ancaman pendatang baru</strong>
+                            Barrier to entry relatif rendah, sehingga ancaman pendatang baru bersifat sedang.
+                        </div>
+                        <div class="value-item">
+                            <strong>Kekuatan tawar menawar pembeli</strong>
+                            Klien memiliki banyak opsi sehingga daya tawar pembeli termasuk tinggi.
+                        </div>
+                        <div class="value-item">
+                            <strong>Kekuatan tawar menawar pemasok</strong>
+                            Tools & platform development banyak tersedia; pemasok tidak dominan (sedang).
+                        </div>
+                        <div class="value-item">
+                            <strong>Ancaman substitusi</strong>
+                            Platform pembuat situs & solusi no-code bisa menggantikan beberapa kebutuhan (sedang).
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Strategy -->
+                <div class="priority-container">
+                    <h3 style="color: var(--primary-color); text-align: center; margin-bottom: 0.8rem;">
+                        <i class="fas fa-flag-checkered"></i> Strategi Sukses KP & Skripsi
+                    </h3>
+                    <p style="text-align:center; color:#cfecff; margin-bottom:1rem;">
+                        Berdasarkan analisis SWOT dan Five Forces, berikut strategi yang direkomendasikan.
+                    </p>
+
+                    <div class="priority-content">
+                        <div class="priority-card">
+                            <h4>Fokus pada Niche</h4>
+                            <p>Mendalami UI/UX untuk web & mobile agar memiliki keahlian spesifik yang dibutuhkan pasar.</p>
+                        </div>
+
+                        <div class="priority-card">
+                            <h4>Bangun Portfolio Kuat</h4>
+                            <p>Kerjakan proyek kecil yang terdokumentasi—tunjukkan proses dan hasil agar terlihat profesional.</p>
+                        </div>
+
+                        <div class="priority-card">
+                            <h4>Jaringan Profesional</h4>
+                            <p>Aktif di komunitas, ikut event dan kolaborasi untuk membuka peluang kerja & proyek.</p>
+                        </div>
+
+                        <div class="priority-card">
+                            <h4>Pembelajaran Berkelanjutan</h4>
+                            <p>Ikuti kursus, workshop, dan praktik langsung untuk tetap update teknologi terbaru.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Website Pribadi Kapita Selekta. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/daffa-raihan-2b6a45293/"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/levasseur189"><i class="fab fa-github"></i></a>
+                    <a href="https://www.instagram.com/daffaraihaannn?utm_source=qr&igsh=ZXIzZzJhbHAzdXUy"><i class="fab fa-instagram"></i></a>
+                    <a href="mailto:daffa9746@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle + hamburger animation + header scroll + scroll animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (menuToggle) {
+                menuToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                    
+                    // Animate hamburger icon
+                    const spans = menuToggle.querySelectorAll('span');
+                    if (navLinks.classList.contains('active')) {
+                        spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                        spans[1].style.opacity = '0';
+                        spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+                    } else {
+                        spans[0].style.transform = 'none';
+                        spans[1].style.opacity = '1';
+                        spans[2].style.transform = 'none';
+                    }
+                });
+            }
+            
+            // Header scroll effect
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 50) {
+                    header.style.padding = '0.5rem 0';
+                    header.style.background = 'rgba(0, 31, 63, 0.95)';
+                } else {
+                    header.style.padding = '1rem 0';
+                    header.style.background = 'linear-gradient(90deg, #001f3f, #005bea)';
+                }
+            });
+            
+            // Animate cards on scroll
+            const cards = document.querySelectorAll('.philosophy-card, .value-item, .priority-card');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'fadeIn 0.8s ease forwards';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+            
+            cards.forEach(el => {
+                el.style.opacity = '0';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>

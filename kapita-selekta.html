@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<!-- saved from url=(0055)file:///C:/VScode/Website%20Pribadi/kapita-selekta.html -->
+<html lang="id"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kapita Selekta - Website Pribadi</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+         /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #00d4ff;   /* cyan neon */
+            --secondary-color: #005bea; /* biru gelap futuristik */
+            --accent-color: #00aaff;    /* biru tegas */
+            --light-color: #e6f7ff;     /* biru muda pastel */
+            --dark-color: #001f3f;      /* biru sangat gelap */
+            --text-color: #e0e0e0;      /* teks abu terang */
+            --shadow: 0 4px 10px rgba(0, 212, 255, 0.3);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            background: linear-gradient(135deg, #001f3f 0%, #003f7f 50%, #005bea 100%);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+/* Header & Navigation */
+        header {
+            background: linear-gradient(90deg, #001f3f, #005bea);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            justify-content: space-evenly;
+            flex: 1;
+        }
+
+        .nav-links li {
+            flex: 1;
+            text-align: center;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 1px;
+            padding: 0.8rem 1rem;
+            display: block;
+            border-radius: 6px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover, 
+        .nav-links a.active {
+            background-color: var(--primary-color);
+            color: #001f3f;
+            transform: translateY(-2px);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 3px 0;
+            transition: var(--transition);
+        }
+        /* Main Content */
+        main {
+            min-height: 80vh;
+            padding: 3rem 0;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+            position: relative;
+            font-size: 2.5rem;
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.7);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            margin: 0.5rem auto;
+            border-radius: 2px;
+        }
+
+        /* Content Cards */
+        .content-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: rgba(0, 31, 63, 0.85);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            backdrop-filter: blur(6px);
+            padding-bottom: 0.6rem;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 212, 255, 0.4);
+        }
+
+        .card-icon {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            font-size: 2rem;
+            padding: 1.2rem;
+            text-align: center;
+        }
+
+        .card-content {
+            padding: 1.25rem 1.25rem 1.6rem 1.25rem;
+        }
+
+        .card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.8rem;
+            font-size: 1.25rem;
+            border-bottom: 2px solid rgba(255,255,255,0.03);
+            padding-bottom: 0.5rem;
+        }
+
+        .card p {
+            color: #cfd8dc;
+            margin-left: 1rem;
+            list-style: disc;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 3rem auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+              background: rgba(0, 31, 63, 0.8);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-content {
+            padding: 20px;
+             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .timeline-content::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            top: 20px;
+            border-radius: 50%;
+            z-index: 1;
+            border: 4px solid var(--primary-color);
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::after {
+            left: -10px;
+        }
+
+        /* Progress Bars */
+        .progress-container {
+            margin: 2rem 0;
+        }
+
+        .progress-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+             color: var(--primary-color);
+             text-shadow: 0 0 10px rgba(0, 212, 255, 0.7);
+        }
+
+        .progress-bar {
+            height: 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 5px;
+            transition: width 1s ease-in-out;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(90deg, #1e1b4b, #2563eb, #06b6d4);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--light-color);
+            transform: translateY(-3px);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: var(--secondary-color);
+                padding: 1rem;
+                box-shadow: var(--shadow);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 0.5rem 0;
+            }
+
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-content::after {
+                left: 15px;
+            }
+            
+            .timeline-item:nth-child(even) .timeline-content::after {
+                left: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header style="padding: 0.5rem 0px; background: rgba(30, 27, 75, 0.95);">
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-user-graduate"></i>
+                    <span>Website Pribadi</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="file:///C:/VScode/Website%20Pribadi/index.html">🏠 Home</a></li>
+                    <li><a href="file:///C:/VScode/Website%20Pribadi/kapita-selekta.html" class="active">📖 Kapita Selekta</a></li>
+                    <li><a href="file:///C:/VScode/Website%20Pribadi/business-plan.html">📈 Business Plan</a></li>
+                    <li><a href="file:///C:/VScode/Website%20Pribadi/flatteners.html">🌐 10 Flatteners</a></li>
+                    <li><a href="file:///C:/VScode/Website%20Pribadi/open-source.html">💻 Open Source</a></li>
+                    <li><a href="file:///C:/VScode/Website%20Pribadi/rencana-bisnis.html">💼 Rencana Bisnis</a></li>
+                    <li><a href="file:///C:/VScode/Website%20Pribadi/seminar.html">👥 Seminar</a></li>
+                </ul>
+                <div class="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="kapita-selekta">
+            <div class="container">
+                <h2 class="section-title">Konsep Dasar Kapita Selekta</h2>
+                
+                <div class="content-cards">
+                    <div class="card" style="opacity: 0;">
+                        <div class="card-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Apa itu Kapita Selekta?</h3>
+                            <p>Kapita Selekta adalah mata kuliah yang mempelajari berbagai topik pilihan dalam bidang teknologi informasi yang relevan dengan perkembangan terkini. Mata kuliah ini dirancang untuk memberikan wawasan mendalam tentang isu-isu strategis dan tren terbaru di industri TI.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card" style="opacity: 0;">
+                        <div class="card-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Kaitan dengan Skripsi/KP</h3>
+                            <p>Kapita Selekta sangat terkait dengan skripsi atau kerja praktek karena memberikan fondasi pengetahuan tentang berbagai konsep dan metodologi yang dapat diterapkan dalam penelitian atau proyek praktikum. Materi yang dipelajari dapat menjadi acuan dalam menentukan topik dan pendekatan untuk skripsi atau KP.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card" style="opacity: 0;">
+                        <div class="card-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Bidang yang Dipilih</h3>
+                            <p>Saya memilih bidang UI/UX dan Web &amp; Mobile Application Development karena kedua bidang ini memiliki prospek yang cerah di era digital dan sesuai dengan minat serta bakat saya dalam menciptakan pengalaman pengguna yang menarik dan aplikasi yang fungsional.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content" style="opacity: 0; animation: 0.8s ease 0s 1 normal forwards running slideIn;">
+                            <h3>Pemahaman Konsep</h3>
+                            <p>Mempelajari dasar-dasar Kapita Selekta dan hubungannya dengan perkembangan teknologi informasi terkini.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content" style="opacity: 0; animation: 0.8s ease 0s 1 normal forwards running slideIn;">
+                            <h3>Analisis Bidang Minat</h3>
+                            <p>Menentukan fokus studi pada UI/UX Design dan Web &amp; Mobile Development berdasarkan minat dan prospek karir.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content" style="opacity: 0; animation: 0.8s ease 0s 1 normal forwards running slideIn;">
+                            <h3>Penerapan dalam KP/Skripsi</h3>
+                            <p>Mengaplikasikan pengetahuan Kapita Selekta dalam penyusunan Kerja Praktek dan Skripsi.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content" style="opacity: 0; animation: 0.8s ease 0s 1 normal forwards running slideIn;">
+                            <h3>Pengembangan Portfolio</h3>
+                            <p>Mendokumentasikan seluruh proses pembelajaran dan hasil proyek dalam bentuk portfolio akademik.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="progress-container">
+                    <h3 style="text-align: center; margin-bottom: 2rem; color: var(--primary-color);">Tingkat Pemahaman Kapita Selekta</h3>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span>Konsep Dasar</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span>Penerapan dalam KP</span>
+                            <span>70%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 70%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span>Pengembangan UI/UX</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span>Web &amp; Mobile Development</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 75%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>© 2025 Website Pribadi Kapita Selekta. All rights reserved.</p>
+                <div class="social-links">
+                     <a href="https://www.linkedin.com/in/daffa-raihan-2b6a45293/"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/levasseur189"><i class="fab fa-github"></i></a>
+                    <a href="https://www.instagram.com/daffaraihaannn?utm_source=qr&igsh=ZXIzZzJhbHAzdXUy"><i class="fab fa-instagram"></i></a>
+                    <a href="mailto:daffa9746@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (menuToggle) {
+                menuToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                    
+                    // Animate hamburger icon
+                    const spans = menuToggle.querySelectorAll('span');
+                    if (navLinks.classList.contains('active')) {
+                        spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                        spans[1].style.opacity = '0';
+                        spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+                    } else {
+                        spans[0].style.transform = 'none';
+                        spans[1].style.opacity = '1';
+                        spans[2].style.transform = 'none';
+                    }
+                });
+            }
+            
+            // Header scroll effect (disamakan dengan index.html)
+window.addEventListener('scroll', function() {
+    const header = document.querySelector('header');
+    if (window.scrollY > 50) {
+        header.style.padding = '0.5rem 0';
+        header.style.background = 'rgba(30, 27, 75, 0.95)'; // ungu gelap transparan
+    } else {
+        header.style.padding = '1rem 0';
+        header.style.background = 'linear-gradient(90deg, #1e1b4b, #2563eb, #06b6d4)'; // gradasi biru teknologi
+    }
+});
+
+            
+            // Animate progress bars on scroll
+            const progressBars = document.querySelectorAll('.progress-fill');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const width = entry.target.style.width;
+                        entry.target.style.width = '0';
+                        setTimeout(() => {
+                            entry.target.style.width = width;
+                        }, 300);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            progressBars.forEach(bar => {
+                observer.observe(bar);
+            });
+            
+            // Animate cards on scroll
+            const cards = document.querySelectorAll('.card');
+            const cardObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'fadeIn 0.8s ease forwards';
+                        cardObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+            
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                cardObserver.observe(card);
+            });
+            
+            // Animate timeline items
+            const timelineItems = document.querySelectorAll('.timeline-content');
+            const timelineObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'slideIn 0.8s ease forwards';
+                        timelineObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.3 });
+            
+            timelineItems.forEach(item => {
+                item.style.opacity = '0';
+                timelineObserver.observe(item);
+            });
+        });
+    </script>
+
+</body></html>

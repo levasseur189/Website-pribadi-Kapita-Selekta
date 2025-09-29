@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>10 Flatteners - Website Pribadi</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    /* Reset CSS */
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+
+    :root {
+      --primary-color:#00d4ff;
+      --secondary-color:#005bea;
+      --accent-color:#00aaff;
+      --dark-color:#001f3f;
+      --text-color:#e0e0e0;
+      --shadow:0 4px 10px rgba(0,212,255,0.3);
+      --transition:all .3s ease;
+    }
+
+    body {
+      background:linear-gradient(135deg,#001f3f 0%,#003f7f 50%,#005bea 100%);
+      color:var(--text-color);
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(90deg, #001f3f, #005bea);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            justify-content: space-evenly;
+            flex: 1;
+        }
+
+        .nav-links li {
+            flex: 1;
+            text-align: center;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 1px;
+            padding: 0.8rem 1rem;
+            display: block;
+            border-radius: 6px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover, 
+        .nav-links a.active {
+            background-color: var(--primary-color);
+            color: #001f3f;
+            transform: translateY(-2px);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 3px 0;
+            transition: var(--transition);
+        }
+
+    main { min-height:80vh; padding:3rem 0; }
+    .section-title {
+      text-align:center; margin-bottom:3rem;
+      color:var(--primary-color); font-size:2.5rem;
+      text-shadow:0 0 10px rgba(0,212,255,.7);
+      position:relative;
+    }
+    .section-title::after {
+      content:''; display:block; width:100px; height:4px;
+      background:linear-gradient(90deg,var(--primary-color),var(--secondary-color));
+      margin:.5rem auto; border-radius:2px;
+    }
+
+    /* Card style (sama dengan open-source.html) */
+    .philosophy-container {
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:1.6rem;
+    }
+    .philosophy-card {
+      background:rgba(0,31,63,0.85);
+      border-radius:15px; overflow:hidden;
+      box-shadow:var(--shadow);
+      transition:var(--transition);
+      backdrop-filter:blur(6px);
+    }
+    .philosophy-card:hover { transform:translateY(-10px); box-shadow:0 10px 20px rgba(0,212,255,.4); }
+    .card-icon {
+      background:linear-gradient(135deg,var(--primary-color),var(--secondary-color));
+      color:white; font-size:2rem; padding:1.2rem; text-align:center;
+    }
+    .card-content { padding:1.25rem 1.25rem 1.6rem; }
+    .card-content h3 { color:var(--primary-color); margin-bottom:.8rem; font-size:1.25rem; }
+    .card-content p { color:#cfd8dc; font-size:.95rem; }
+
+    footer {
+      background:linear-gradient(90deg,#001f3f,#005bea);
+      color:white; text-align:center;
+      padding:2rem 0; margin-top:2.5rem;
+    }
+    .footer-content { display:flex; flex-direction:column; align-items:center; gap:1rem; }
+    .social-links { display:flex; gap:15px; }
+    .social-links a { color:white; font-size:1.4rem; transition:var(--transition); }
+    .social-links a:hover { color:var(--primary-color); transform:translateY(-3px); }
+
+    /* Animations */
+    @keyframes fadeIn { from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);} }
+
+    @media(max-width:768px){
+      .menu-toggle{display:flex;}
+      .nav-links{display:none;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--secondary-color);padding:1rem;}
+      .nav-links.active{display:flex;}
+      .nav-links li{margin:.5rem 0;}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo"><i class="fas fa-user-graduate"></i><span>Website Pribadi</span></div>
+        <ul class="nav-links">
+          <li><a href="index.html">🏠 Home</a></li>
+          <li><a href="kapita-selekta.html">📖 Kapita Selekta</a></li>
+          <li><a href="business-plan.html">📈 Business Plan</a></li>
+          <li><a href="flatteners.html" class="active">🌐 10 Flatteners</a></li>
+          <li><a href="open-source.html">💻 Open Source</a></li>
+          <li><a href="rencana-bisnis.html">💼 Rencana Bisnis</a></li>
+          <li><a href="seminar.html">👥 Seminar</a></li>
+        </ul>
+        <div class="menu-toggle"><span></span><span></span><span></span></div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="flatteners">
+      <div class="container">
+        <h2 class="section-title">10 Flatteners Dunia</h2>
+        <div class="philosophy-container">
+          <div class="philosophy-card">
+            <div class="card-icon"><i class="fas fa-globe"></i></div>
+            <div class="card-content">
+              <h3>1. Runtuhnya Tembok Berlin</h3>
+              <p>Membuka jalan globalisasi dan perdagangan bebas antar negara.</p>
+            </div>
+          </div>
+          <div class="philosophy-card">
+            <div class="card-icon"><i class="fas fa-desktop"></i></div>
+            <div class="card-content">
+              <h3>2. Internet & Web</h3>
+              <p>Konektivitas global, informasi mudah diakses di seluruh dunia.</p>
+            </div>
+          </div>
+          <div class="philosophy-card">
+            <div class="card-icon"><i class="fas fa-code"></i></div>
+            <div class="card-content">
+              <h3>3. Workflow Software</h3>
+              <p>Kolaborasi lintas negara dengan software integrasi (email, ERP, CRM).</p>
+            </div>
+          </div>
+          <div class="philosophy-card">
+            <div class="card-icon"><i class="fas fa-users"></i></div>
+            <div class="card-content">
+              <h3>4. Open-Sourcing</h3>
+              <p>Komunitas global membangun software terbuka (Linux, GitHub, dsb).</p>
+            </div>
+          </div>
+          <div class="philosophy-card">
+            <div class="card-icon"><i class="fas fa-building"></i></div>
+            <div class="card-content">
+              <h3>5. Outsourcing</h3>
+              <p>Perusahaan memanfaatkan tenaga kerja dari luar untuk efisiensi.</p>
+            </div>
+          </div>
+          <div class="philosophy-card">
+            <div class="card-icon"><i class="fas fa-shipping-fast"></i></div>
+            <div class="card-content">
+              <h3>6. Offshoring</h3>
+              <p>Produksi dipindah ke negara lain dengan biaya lebih rendah.</p>
+            </div>
+          </div>
+          <div class="philosophy-card">
+            <div class="card-icon"><i class="fas fa-handshake"></i></div>
+            <div class="card-content">
+              <h3>7. Supply-Chaining</h3>
+              <p>Optimasi rantai pasokan global (contoh: Walmart, Amazon).</p>
+            </div>
+          </div>
+          <div class="philosophy-card">
+            <div class="card-icon"><i class="fas fa-plane"></i></div>
+            <div class="card-content">
+              <h3>8. Insourcing</h3>
+              <p>Mitra eksternal membantu proses bisnis internal perusahaan.</p>
+            </div>
+          </div>
+          <div class="philosophy-card">
+            <div class="card-icon"><i class="fas fa-search"></i></div>
+            <div class="card-content">
+              <h3>9. In-Forming</h3>
+              <p>Akses informasi instan melalui mesin pencari (Google, Bing).</p>
+            </div>
+          </div>
+          <div class="philosophy-card">
+            <div class="card-icon"><i class="fas fa-robot"></i></div>
+            <div class="card-content">
+              <h3>10. Steroids (Teknologi Digital)</h3>
+              <p>Inovasi teknologi digital, wireless, mobile, dan AI mempercepat globalisasi.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <p>&copy; 2025 Website Pribadi Kapita Selekta. All rights reserved.</p>
+        <div class="social-links">
+           <a href="https://www.linkedin.com/in/daffa-raihan-2b6a45293/"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/levasseur189"><i class="fab fa-github"></i></a>
+                    <a href="https://www.instagram.com/daffaraihaannn?utm_source=qr&igsh=ZXIzZzJhbHAzdXUy"><i class="fab fa-instagram"></i></a>
+                    <a href="mailto:daffa9746@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        const spans = menuToggle.querySelectorAll('span');
+        if (navLinks.classList.contains('active')) {
+          spans[0].style.transform = 'rotate(45deg) translate(5px,5px)';
+          spans[1].style.opacity = '0';
+          spans[2].style.transform = 'rotate(-45deg) translate(7px,-6px)';
+        } else {
+          spans[0].style.transform = 'none';
+          spans[1].style.opacity = '1';
+          spans[2].style.transform = 'none';
+        }
+      });
+
+      // Scroll animation
+      const cards = document.querySelectorAll('.philosophy-card');
+      const observer = new IntersectionObserver(entries=>{
+        entries.forEach(entry=>{
+          if(entry.isIntersecting){
+            entry.target.style.animation = 'fadeIn .8s ease forwards';
+            observer.unobserve(entry.target);
+          }
+        });
+      },{threshold:0.15});
+      cards.forEach(el=>{
+        el.style.opacity='0';
+        observer.observe(el);
+      });
+    });
+  </script>
+</body>
+</html>
